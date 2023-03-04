@@ -1,0 +1,95 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple example NodeJS API project to demonstrate Swagger Documentation",
+        "version": "1.0.0",
+        "title": "REST API",
+        "contact": {
+            "email": "sourab.asia@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": ["http"],
+    "host": "localhost:8001",
+    "basePath": "/v1",
+    "paths": {
+        "/posts": {
+            "post": {
+                "summary": "blog post insert",
+                "description": "blog post insert",
+                "tags": ["Blog Post"],
+                "produces": ["application/json"],
+                "security": [{ "bearerAuth": [] }],
+                "responses": {},
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    }
+                ]
+            },
+            "get": {
+                "summary": "blog post get all",
+                "description": "blog post get all",
+                "tags": ["Blog Post"],
+                "responses": {}
+            }
+        },
+        "/posts/{id}": {
+            "put": {
+                "summary": "blog post update",
+                "description": "blog post update",
+                "tags": ["Blog Post"],
+                "produces": ["application/json"],
+                "responses": {},
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                    { "in": "path", "name": "id" },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Post"
+                        }
+                    }
+                ]
+            },
+            "get": {
+                "summary": "blog post get one data",
+                "description": "blog get one data",
+                "tags": ["Blog Post"],
+                "responses": {},
+                "parameters": [{ "in": "path", "name": "id" }]
+            },
+            "delete": {
+                "summary": "blog post delete data",
+                "description": "blog post delete data",
+                "tags": ["Blog Post"],
+                "responses": {},
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [{ "in": "path", "name": "id" }]
+            }
+        }
+    },
+    "definitions": {
+        "Post": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": ""
+                },
+                "body": {
+                    "type": "string",
+                    "description": ""
+                }
+            }
+        }
+    }
+}
